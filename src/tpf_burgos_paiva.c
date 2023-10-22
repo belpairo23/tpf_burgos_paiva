@@ -3,7 +3,7 @@
 #include <time.h>
 
 
-//Los ultimos cambios hechos 16/10/23
+
 //Se puso una funcion que guardade en un vector  cuantos dados de cada color hay en el tablero  (ver_ganador)
 //Se puso una funcion que con el vector de dados imprime la cantidad de dados y tambien ve quien gano o si hubo un empate (print_ganador)
 //Tambien se hizo una funcion que resetea los valores de detector[12] para evitar
@@ -419,8 +419,7 @@ void reset_det(int detector[12]){
 //fin es la variable que entra a una funcion si toda la matriz es distinta 0 fin cambia de valor y eso hace que se deje de ejecutar el while
 //color es la variable que selecciona que color tendra tu dado (para rojo le dimos valores negativos y para azul positivos)
 //empezar es la variable que hace
-int main()
-{
+int main(){
 	int detector[12],ver_coordenas[1];
 	int x,y,suma, comp;
 	int fin = 0;
