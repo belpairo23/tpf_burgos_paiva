@@ -3,8 +3,6 @@
 #include <time.h>
 
 
-
-//Se puso una funcion que guardade en un vector  cuantos dados de cada color hay en el tablero  (ver_ganador)
 //Se puso una funcion que con el vector de dados imprime la cantidad de dados y tambien ve quien gano o si hubo un empate (print_ganador)
 //Tambien se hizo una funcion que resetea los valores de detector[12] para evitar
 //Se hizo un void para que retorne correctamente los valores del vector director[12]
@@ -185,21 +183,8 @@ int ver_fin_juego(int fin){
 	if(cont == 25){ fin = 1;}
 	return fin;
 }
-//Almacena en la variabel ganador la cantidad de dadods azules y rojos
-void ver_ganador(int ganador[1]){
-	int cont = 0;
-	int cont2 = 0;
+//Almacena en la variable ganador la cantidad de dadods azules y rojos
 
-	for(int i = 0; i < 5; i++){
-			for(int j = 0; j < 5; j++){
-				if(matriz[i][j] > 0){ ++cont;}
-				if(matriz[i][j] < 0){ ++cont;}
-			}
-		}
-    ganador[0] = cont;
-    ganador[1] = cont2;
-
-}
 //Compara con las cantidades almacenadas en ganador para ver quien gano o si hubo un empate
 void print_ganador(int ganador[1]){
     if( ganador[0] > ganador[1] ){
@@ -412,13 +397,14 @@ void reset_det(int detector[12]){
         detector[i] = 0;
     }
 }
-//detecor es un vector donde se almacena en su primera posicion la cantidad de posibles jugadas y en las otras posiciones el tipo de jugadas que un puede hacer
+//detector es un vector donde se almacena en su primera posicion la cantidad de posibles jugadas y en las otras posiciones el tipo de jugadas que un puede hacer
 //x e y son las cordenadas puestas para jugar
 //La variable suma que se utiliza para elegir que forma de capturar dados se va a utilizar
 //comp es una variable que define se se va jugar contra la CPU o PvP
 //fin es la variable que entra a una funcion si toda la matriz es distinta 0 fin cambia de valor y eso hace que se deje de ejecutar el while
 //color es la variable que selecciona que color tendra tu dado (para rojo le dimos valores negativos y para azul positivos)
-//empezar es la variable que hace
+//empezar es la variable que hace que se elija quien empieza
+
 int main(){
 	int detector[12],ver_coordenas[1];
 	int x,y,suma, comp;
@@ -428,7 +414,7 @@ int main(){
 	int i = 1;
 	int a = 0;
 	int acabar_juego = 0;
-	int ganador[1];
+
 
 	printf("Escriba 1 si quiere jugar contra la CPU, escriba 2 si quiere jugar PvP: ");
 	scanf("%d", &comp);
@@ -480,8 +466,7 @@ int main(){
     ver_color(acabar_juego);
     if(acabar_juego == 1){
         fin = 1;
-        ver_ganador(ganador);
-        print_ganador(ganador);
+
     }
 
 	// cambio de turno, cambio de color
@@ -522,14 +507,14 @@ int main(){
             	++i;
             	srand(time(NULL));
 
-            	//cambiar acabar
+
             	ver_coordenas[0] = rand() % 5;
             	ver_coordenas[1] = rand() % 5;
             	ver_coordenas[1] = ver_posicion_libre_maquina(y,x,ver_coordenas);
 
             	x = ver_coordenas[0];
             	y = ver_coordenas[1];
-            	// hasta aca
+
 
             	detectar_tip_suma( detector, y, x);
 
@@ -549,8 +534,7 @@ int main(){
                 ver_color(acabar_juego);
                 if(acabar_juego == 1){
                 fin = 1;
-                ver_ganador(ganador);
-                print_ganador(ganador);
+
                     }
             	}
             }
@@ -615,14 +599,12 @@ int main(){
                 ver_color(acabar_juego);
                 if(acabar_juego == 1){
                 fin = 1;
-                ver_ganador(ganador);
-                print_ganador(ganador);
+
                 }
 
                 //para que imprima quien gano si es que ya se lleno el table cuando jugo la CPU
                 if(acabar_juego == 1){
-                ver_ganador(ganador);
-                print_ganador(ganador);
+
             }
             }
         }
