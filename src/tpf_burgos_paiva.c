@@ -499,7 +499,6 @@ int main(){
 
             	mostrarmatriz();
 
-
             	fin = ver_fin_juego(fin);
 
             	if (fin == 0){
